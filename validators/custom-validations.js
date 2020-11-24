@@ -16,11 +16,8 @@ exports.body = (req, res, next) => {
             isNotEmptyAndIsString(data.title) &&
             isNotEmptyAndIsString(data.director) &&
             isNotEmptyAndIsString(data.genre)
-
-
-
             
-        ) {
+       ) {
             next();
         } else {
             res.status(400).send({
