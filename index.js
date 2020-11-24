@@ -1,7 +1,14 @@
+var cors = require("cors");
+const validators = require("./validators/custom-validations.js");
 const repoContext = require("./repository/repository-wrapper.js");
 const express = require('express');
 
 const app = express();
+
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use((req, res, next) => validators.body(req, res, next));
 
 app.listen(3000, function () {
     console.log('Server started. Listening on port 3000.');
@@ -15,4 +22,17 @@ app.get("/api/movies/:id", (req, res) => {
     let movies = repoContext.movies.findMovieById(id);
     res.send(movies);
    });
+
+app.post("/api/movies", (req, res) => {
+    let newMovie = req.body;
+    let addedMovie = repoContext.movies.createMovie(newMovie);
+    res.send(addedMovie);
+   });
+
+app.delete("/api/movies/:id", (req, res) => {
+    let id = req.params.id;
+    let updatedDataSet = repoContext.movies.deleteMovie(id);
+    res.send(updatedDataSet);
+   });
+   
    

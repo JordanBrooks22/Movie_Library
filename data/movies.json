@@ -26,7 +26,13 @@
   {
     "id": 5,
     "title": "Die Hard",
-    "director": "John McTiernan",
+    "director": "David Red",
+    "genre": "Christmas Movie"
+  },
+  {
+    "id": 6,
+    "title": "Magical Movie Thyme",
+    "director": "The Grinch",
     "genre": "Action"
   }
 ]
