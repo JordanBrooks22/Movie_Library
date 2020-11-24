@@ -29,7 +29,7 @@ app.post("/api/movies", (req, res) => {
     res.send(addedMovie);
    });
 
-   //created a put command that works in postman. movieUpdate is the JSON object, and the updateMovie is the execution. 
+   //created a put command that works in postman. movieUpdate is the JSON object, and the updateMovie is the execution [RDM]. 
 app.put("/api/movies", (req, res) => {
     let movieUpdate = req.body;
     let updatedMovie = repoContext.movies.updateMovie(movieUpdate);
