@@ -6,7 +6,6 @@ function getAllMovies() {
             type: "GET",
             success: function (data, textStatus, jqXHR) {
                 $('.table-body').html(''); //empties table
-                alert("Load was performed.");
             }
         })
             .then(function (data) {

@@ -56,3 +56,19 @@
           display: none;
         }
       }
+
+#add-button{
+  margin: 1em;
+}
+
+#update-button{
+  margin: 1em;
+}
+
+#delete-button{
+  margin: 1em;
+}
+
+#search-bar{
+  float: right;
+}
