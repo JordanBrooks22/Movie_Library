@@ -42,7 +42,7 @@
   </header>
   <!-- navbar -->
   <nav class="navbar navbar-light bg-light justify-content-between">
-    <a class="navbar-brand">Navbar</a>
+    <a class="navbar-brand">Movies</a>
     <div class="col-2" style="float: right;">
       <div class="btn-group" role="group" aria-label="Basic example">
         <button type="button" class="btn btn-success">Add</button>
@@ -50,11 +50,14 @@
         <button type="button" class="btn btn-danger">Delete</button>
       </div>
     </div>
-    <form class="form-inline" id="search-bar">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
+    <div>
+      <form class="form-inline" id="search-bar">
+        <input class="form-control mr-sm-2" type="search" id="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+      <ul class="list-group" id="result"></ul>
+      <br />
+    </div>
   </nav>
   <!-- Editable table -->
   <table class="table table-striped table-dark table-bordered table-sm">
@@ -64,6 +67,7 @@
         <th class="text-left">Title</th>
         <th class="text-left">Director</th>
         <th class="text-left">Genre</th>
+        <th class="text-left">Image</th>
       </tr>
     </thead>
     <tbody class="table-body">
@@ -72,6 +76,7 @@
         <td class="pt-3-half" contenteditable="true">The Grinch </td>
         <td class="pt-3-half" contenteditable="true">RM </td>
         <td class="pt-3-half" contenteditable="true">Cartoon </td>
+        <td class="pt-3-half" contenteditable="true"></td>
       </tr>
     </tbody>
   </table>
@@ -79,7 +84,34 @@
   </div>
   </div>
 
-  <script src="getMovie.js"></script>
+
 </body>
+<script src="getMovie.js"></script>
 
 </html>
+
+<script>
+  $(document).ready(function(){
+   $.ajaxSetup({ cache: false });
+   $('#search').keyup(function(){
+    $('#result').html('');
+    $('#state').val('');
+    var searchField = $('#search').val();
+    var expression = new RegExp(searchField, "i");
+    $.getJSON('http:localhost:3000/api/movies', function(data) {
+     $.each(data, function(index, movie){
+      if (movie.title.search(expression) != -1 || movie.director.search(expression) != -1 || movie.genre.search(expression) != -1)
+      {
+       $('#result').append('<li class="list-group-item link-class"><img src="'+movie.image+'" height="40" width="40" class="img-thumbnail" /> '+movie.title+' | <span class="text-muted">'+movie.director+'</span> | <span class="text-muted">'+movie.genre+'</span></li>');
+      }
+     });   
+    });
+   });
+   
+   $('#result').on('click', 'li', function() {
+    var click_text = $(this).text().split('|');
+    $('#search').val($.trim(click_text[0]));
+    $("#result").html('');
+   });
+  });
+  </script>
