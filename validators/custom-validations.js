@@ -16,10 +16,22 @@ exports.body = (req, res, next) => {
             isNotEmptyAndIsString(data.title) &&
             isNotEmptyAndIsString(data.director) &&
             isNotEmptyAndIsString(data.genre)
+            
+        ) {
+            next();
+        }
+        
+        else if (
+            (method == "PUT" ? isNullOrUndefined(data.id): isNotEmptyAndIsNumber(data.id)) ||
+        isNotEmptyAndIsString(data.title) ||
+        isNotEmptyAndIsString(data.director) ||
+        isNotEmptyAndIsString(data.genre)
 
         ) {
             next();
-        } else {
+        }
+        
+        else {
             res.status(400).send({
                 error: { status: 400, description: "Invalid object format." },
             });

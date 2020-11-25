@@ -3,13 +3,13 @@
     "id": 1,
     "title": "The Departed",
     "director": "Martin Scorsese",
-    "genre": "Drama"
+    "genre": "Comedy"
   },
   {
     "id": 2,
-    "title": "The Dark Knight",
-    "director": "Drama",
-    "genre": "Christopher Nolan"
+    "title": "The Departed",
+    "director": "Martin Scorsese",
+    "genre": "Comedy"
   },
   {
     "id": 3,
