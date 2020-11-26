@@ -17,7 +17,9 @@ function getAllMovies() {
                         "<td>" + movie.title + "</td>" +
                         "<td>" + movie.director + "</td>" +
                         "<td>" + movie.genre + "</td>" +
+                        "<td>" + movie.image + "</td>" +
                         "</tr>"
+                        
                     );
                 });
             });
@@ -25,3 +27,50 @@ function getAllMovies() {
 }
 
 getAllMovies();
+
+function addMovie() {
+
+    let movie = {
+        "title": $("#movieList-input1").val(),
+        "director": $("#movieList-input2").val(),
+        "genre": $("#movieList-input3").val()
+
+    }
+
+    $.ajax ({
+        url: 'http:localhost:3000/api/movies',
+        dataType: "json",
+        type: "POST",
+        data: movie,
+        success: function (data, textStatus, jqXHR) {
+            alert("Success");
+            $('.table-body').html(''); //empties table
+            getAllMovies();
+            
+        }
+    })
+}
+
+function updateMovie() {
+
+    let movie = {
+        "id": $("#movie-id").val(),
+        "title": $("#movieList-input4").val(),
+        "director": $("#movieList-input5").val(),
+        "genre": $("#movieList-input6").val()
+
+    }
+    $.ajax ({
+        url: 'http:localhost:3000/api/movies',
+        dataType: "json",
+        type: "PUT",
+        data: movie,
+        success: function (data, textStatus, jqXHR) {
+            alert("Success");
+            $('.table-body').html(''); //empties table
+            getAllMovies();
+            
+        }
+    })
+}
+
