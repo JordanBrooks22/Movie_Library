@@ -6,13 +6,9 @@ function getAllMovies() {
             type: "GET",
             success: function (data, textStatus, jqXHR) {
                 $('.table-body').html(''); //empties table
-
-            }
-        })
-            .then(function (data) {
                 $.each(data, function (index, movie) { //.each ~loop for jQuery for each object, return key value pair
                     $('.table-body').append(
-                        "<tr>" +
+                        "<tr class='table-items' id='movie_"+movie.id+"'>" +
                         "<td>" + movie.id + "</td>" +
                         "<td>" + movie.title + "</td>" +
                         "<td>" + movie.director + "</td>" +
@@ -22,8 +18,9 @@ function getAllMovies() {
                         
                     );
                 });
-            });
-        });
+            }
+        })
+    });
 }
 
 getAllMovies();

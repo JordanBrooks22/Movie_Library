@@ -1,10 +1,10 @@
 [
   {
     "id": 1,
-    "title": "1",
-    "director": "1",
-    "genre": "1",
-    "image": "1"
+    "title": "Bram Stoker's Dracula",
+    "director": "Francis Ford Coppola",
+    "genre": "Horror",
+    "image": "img/movieImages/dracula.jpg"
   },
   {
     "id": 2,
@@ -44,17 +44,15 @@
   {
     "id": 7,
     "title": "The Great Race",
-    "director": "The Great Race"
+    "director": "Blake Edwards",
+    "genre": "Slapstick Comedy",
+    "image":  "img/movieImages/great_Race.jpg"
   },
   {
     "id": 8,
-    "title": "The Great Race",
-    "director": "The Great Race"
-  },
-  {
-    "id": 9,
-    "title": "One",
-    "director": "Two",
-    "genre": "Three"
+    "title": "The Cannonball Run",
+    "director": "Hal Needham",
+    "genre": "Comedy",
+    "image": "img/movieImages/Cannonball_run.jpg"
   }
 ]
