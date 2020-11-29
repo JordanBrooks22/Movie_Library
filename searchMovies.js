@@ -28,3 +28,4 @@ function searchMovie(id) {
     $('#movie_'+id).show();
 
 }
+

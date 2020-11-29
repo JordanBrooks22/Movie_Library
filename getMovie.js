@@ -13,8 +13,8 @@ function getAllMovies() {
                         "<td>" + movie.title + "</td>" +
                         "<td>" + movie.director + "</td>" +
                         "<td>" + movie.genre + "</td>" +
-                        "<td>" + movie.image + "</td>" +
-                        "</tr>"
+                        `<td><img src ="${movie.image}" height="70px"></td>`
+                        +"</tr>"
                         
                     );
                 });
