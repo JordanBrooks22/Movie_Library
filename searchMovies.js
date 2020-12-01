@@ -20,12 +20,14 @@ $(document).ready(function () {
         var click_text = $(this).text().split('|');
         $('#search').val($.trim(click_text[0]));
         $("#result").html('');
+        $('#search').val('').change();
     });
 });
 
 function searchMovie(id) {
     $('.table-items').hide();
     $('#movie_'+id).show();
+    
 
 }
 

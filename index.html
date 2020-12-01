@@ -13,15 +13,16 @@
   <title>Marvelous Movie Machine</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"></script>
-  <script src="/table.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://use.fontawesome.com/b46477c355.js"></script>
 </head>
 
 <body>
@@ -41,28 +42,29 @@
   </header>
   <!-- navbar -->
   <nav class="navbar navbar-light bg-light justify-content-between">
-    <a class="navbar-brand">Movies</a>
+    <!-- <a class="navbar-brand">Movies</a> -->
     <div class="col-2" style="float: right;">
       <div class="btn-group" role="group" aria-label="Basic example">
         <button type="button" id="button-add" class="btn btn-success" onclick="addMovie()">Add</button>
-        <button type="button" class="btn btn-primary"data-toggle="modal" data-target="#exampleModal">Update</button>
-        <button type="button" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+          onclick="updateMovie()">Update</button>
       </div>
     </div>
     <div>
       <label for="movie-Id">Movie Id</label>
-      <input type="text" id="movie" name="movie-Id">
+      <input type="text" id="movie-id" name="movie-Id">
       <label for="title">Title</label>
-      <input type="text" id="movieList-input1" name="title">
+      <input type="text" id="movieList-input1" class="movieList-input-title" name="title">
       <label for="director">Director</label>
-      <input type="text" id="movieList-input2" name="director">
+      <input type="text" id="movieList-input2" class="movieList-input-director" name="director">
       <label for="genre">Genre</label>
-      <input type="text" id="movieList-input3" name="genre">
+      <input type="text" id="movieList-input3" class="movieList-input-genre" name="genre">
+      <label for="genre">Image (relative) Path</label>
+      <input type="text" id="movieList-input4" class="movieList-input-image" name="image">
     </div>
     <div>
       <form class="form-inline" id="search-bar">
         <input class="form-control mr-sm-2" type="search" id="search" placeholder="Search" aria-label="Search">
-        <!-- <button class="btn btn-outline-success my-2 my-sm-0" onclick="searchMovie()">Search</button> -->
       </form>
       <ul class="list-group" id="result"></ul>
       <br />
@@ -71,96 +73,46 @@
 
 
   <!-- Editable table -->
-  <table class="table table-striped table-dark table-bordered table-sm" id="table">
-    <thead class="table-head">
-      <tr>
-        <th class="text-left">id</th>
-        <th class="text-left">Title</th>
-        <th class="text-left">Director</th>
-        <th class="text-left">Genre</th>
-        <th class="text-left">Image</th>
-      </tr>
-    </thead>
-    <tbody class="table-body" id="movieList">
-      <tr>
-        <td class="pt-3-half" contenteditable=""></td>
-        <td class="pt-3-half" contenteditable=""></td>
-        <td class="pt-3-half" contenteditable=""></td>
-        <td class="pt-3-half" contenteditable=""></td>
-        <td class="pt-3-half" contenteditable="" ></td>
-      </td> 
-    </tr>
-    </tbody>
-  </table>
-  </div>
-  </div>
-  </div>
+  <div class="card">
+    <div class="card-body">
+      <div id="table" class="table-editable">
+        <table class="table table-bordered table-responsive-md table-striped text-center">
+          <thead>
+            <tr>
+              <th class="text-left">id</th>
+              <th class="text-left">Title</th>
+              <th class="text-left">Director</th>
+              <th class="text-left">Genre</th>
+              <th class="text-left">Image</th>
+              <th class="text-center">Remove</th>
+            </tr>
+          </thead>
+          <tbody class="table-body" id="movieList">
+            <tr>
+              <td class="pt-3-half" contenteditable="false"></td>
+              <td class="pt-3-half" contenteditable="true"></td>
+              <td class="pt-3-half" contenteditable="true"></td>
+              <td class="pt-3-half" contenteditable="true"></td>
 
-
+              <td class="pt-3-half">
+                <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up"
+                      aria-hidden="false"></i></a></span>
+                <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down"
+                      aria-hidden="false"></i></a></span>
+              </td>
+              <td>
+                <span class="table-remove"><button type="button"
+                    class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
+
 </html>
 <script src="getMovie.js"></script>
 <script src="searchMovies.js"></script>
-<!-- Modal -->
-<div id="movie-update" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-        <p>Some text in the modal.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-<!-- <script>$(document).ready(function(){
-  $("#search").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#table-body").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});</script> -->
-<!-- Button trigger modal -->
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Update Movie</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" style="text-align: right;">
-        <div>
-          <label for="movie-Id">Movie Id</label>
-          <input type="text" id="movie-id" name="movie-Id"></br>
-          <label for="title">Title</label>
-          <input type="text" id="movieList-input4" name="title"></br>
-          <label for="director">Director</label>
-          <input type="text" id="movieList-input5" name="director"></br>
-          <label for="genre">Genre</label>
-          <input type="text" id="movieList-input6" name="genre"></br>
-        </div>
-        <div class="btn-group" role="group" aria-label="Basic example">
-        </div>
-        
-        <script src="getMovie.js"></script>
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="button-update" class="btn btn-success" onclick="updateMovie()">Update</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
